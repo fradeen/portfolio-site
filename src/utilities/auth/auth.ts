@@ -5,4 +5,11 @@ export const {
     auth,
 } = NextAuth({
     providers: [Google],
+    callbacks: {
+        authorized({ request, auth }) {
+            const { pathname } = request.nextUrl
+            if (pathname.includes("/dashboard")) return !!auth
+            return true
+        },
+    },
 })
