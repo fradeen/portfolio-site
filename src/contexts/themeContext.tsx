@@ -1,7 +1,7 @@
 'use client'
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { ThemecontextType } from "@/types/themeContextTypes";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useCallback, useContext, useEffect, useState } from "react";
 
 const ThemeContext = createContext<ThemecontextType>({
     theme: 'dark',
@@ -20,7 +20,8 @@ const ThemeContext = createContext<ThemecontextType>({
 export default function ThemeContextProvider({ children }: { children: React.ReactNode }) {
     const [localtheme, setLocalTheme] = useLocalStorage<string | null>('theme')
     const [systemTheme, setSystemTheme] = useState('dark')
-    const [isAuto, setIsAuto] = useState(localtheme ? false : true)
+    const [isAuto, setIsAuto] = useState(true)
+    const [isClient, setIsClient] = useState(false)
     function toggleTheme() {
         if (!isAuto)
             setLocalTheme(prevTheme => prevTheme === 'dark' ? 'light' : 'dark')
@@ -30,8 +31,15 @@ export default function ThemeContextProvider({ children }: { children: React.Rea
     }
     function resetLocalTheme() {
         setLocalTheme(null)
+        setIsAuto(true)
     }
+    const restoreThemePrefrences = useCallback(() => {
+        if (localtheme)
+            setIsAuto(false)
+    }, [localtheme])
     useEffect(() => {
+        restoreThemePrefrences()
+        setIsClient(true)
         // Add listener to update styles
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
             setSystemTheme(e.matches ? 'dark' : 'light')
@@ -45,12 +53,19 @@ export default function ThemeContextProvider({ children }: { children: React.Rea
             window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', () => {
             });
         }
-    }, []);
-    return (
-        <ThemeContext.Provider value={{ theme: `${isAuto ? systemTheme : localtheme}`, isAuto: isAuto, setIsAuto: setIsAuto, toggleTheme: toggleTheme, resetLocalTheme: resetLocalTheme }}>
-            {children}
-        </ThemeContext.Provider>
-    )
+    }, [restoreThemePrefrences])
+    if (isClient)
+        return (
+            <ThemeContext.Provider value={{ theme: `${isAuto ? systemTheme : localtheme}`, isAuto: isAuto, setIsAuto: setIsAuto, toggleTheme: toggleTheme, resetLocalTheme: resetLocalTheme }}>
+                {children}
+            </ThemeContext.Provider>
+        )
+    else
+        return (
+            <ThemeContext.Provider value={{ theme: systemTheme, isAuto: isAuto, setIsAuto: setIsAuto, toggleTheme: toggleTheme, resetLocalTheme: resetLocalTheme }}>
+                {children}
+            </ThemeContext.Provider>
+        )
 
 }
 
