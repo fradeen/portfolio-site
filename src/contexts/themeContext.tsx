@@ -54,18 +54,12 @@ export default function ThemeContextProvider({ children }: { children: React.Rea
             });
         }
     }, [restoreThemePrefrences])
-    if (isClient)
-        return (
-            <ThemeContext.Provider value={{ theme: `${isAuto ? systemTheme : localtheme}`, isAuto: isAuto, setIsAuto: setIsAuto, toggleTheme: toggleTheme, resetLocalTheme: resetLocalTheme }}>
-                {children}
-            </ThemeContext.Provider>
-        )
-    else
-        return (
-            <ThemeContext.Provider value={{ theme: systemTheme, isAuto: isAuto, setIsAuto: setIsAuto, toggleTheme: toggleTheme, resetLocalTheme: resetLocalTheme }}>
-                {children}
-            </ThemeContext.Provider>
-        )
+    return (
+        <ThemeContext.Provider value={{ theme: `${isClient ? isAuto ? systemTheme : localtheme : systemTheme}`, isAuto: isAuto, setIsAuto: setIsAuto, toggleTheme: toggleTheme, resetLocalTheme: resetLocalTheme }}>
+            {children}
+        </ThemeContext.Provider>
+    )
+
 
 }
 
