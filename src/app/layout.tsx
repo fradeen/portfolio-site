@@ -3,7 +3,6 @@ import "./globals.css";
 import Body from "@/components/body/body";
 import ThemeContextProvider from "@/contexts/themeContext";
 
-
 export const metadata: Metadata = {
   title: "Portfolio",
   description: "Fardeen\'s porfolio",
