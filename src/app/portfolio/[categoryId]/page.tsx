@@ -8,7 +8,7 @@ export async function generateStaticParams() {
 const projects = [1, 2, 3]
 export default function page({ params: { categoryId } }: { params: { categoryId: string } }) {
     return (
-        <div className='grow min-h-fit w-full self-center border-2 border-gray-500 p-2 flex flex-col justify-center'>
+        <div className='customContainer flex flex-col justify-center'>
             <div className='min-h-fit w-full border-2 border-gray-500 p-2 text-4xl font-semibold'>
                 Category: Web Development
             </div>
