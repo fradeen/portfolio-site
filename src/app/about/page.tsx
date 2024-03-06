@@ -6,7 +6,7 @@ import RenderMarkdown from '@/components/renderMarkdown/renderMarkdown'
 export default async function About() {
     const userInfo = await prisma.user.findFirstOrThrow()
     return (
-        <div className='min-h-fit w-full border-2 p-2 border-gray-500'>
+        <div className='customContainer'>
             <div className='mb-5'>
                 <RenderMarkdown markdown={userInfo.about} />
             </div>

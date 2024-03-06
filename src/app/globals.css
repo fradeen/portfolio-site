@@ -27,3 +27,9 @@
         @apply text-2xl font-semibold
     }
 }
+
+@layer components {
+    .customContainer {
+        @apply grow min-h-fit w-full border-2 p-2 border-gray-500 self-center
+    }
+}
