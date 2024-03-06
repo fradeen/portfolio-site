@@ -32,9 +32,11 @@ export default function NavBar() {
     const pathname = usePathname()
     return (
         <div className='flex flex-wrap justify-between mx-2 px-2 w-full'>
-            <Link href='/' className='hover:text-green-500 self-center text-3xl font-semibold px-2 w-3/12 flex justify-start'>
-                Home
-            </Link>
+            <div className='self-center px-2 w-3/12 flex justify-start'>
+                <Link href='/' className='hover:text-green-500 text-3xl font-semibold'>
+                    Home
+                </Link>
+            </div>
             <div className='w-3/12 px-2 flex justify-end'>
                 <ThemeSwitcher />
             </div>
