@@ -31,7 +31,7 @@ const navigationLinks = [
 export default function NavBar() {
     const pathname = usePathname()
     return (
-        <div className='flex flex-wrap justify-between mx-2 px-2 w-full'>
+        <div className='flex flex-wrap justify-between mx-2 px-2 w-full min-w-96 max-w-screen-lg'>
             <div className='self-center px-2 w-3/12 flex justify-start'>
                 <Link href='/' className='hover:text-green-500 text-3xl font-semibold'>
                     Home

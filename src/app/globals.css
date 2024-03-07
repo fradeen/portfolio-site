@@ -26,10 +26,14 @@
     h6 {
         @apply text-2xl font-semibold
     }
+
+    table {
+        @apply table-auto border-collapse
+    }
 }
 
 @layer components {
     .customContainer {
-        @apply grow min-h-fit w-full border-2 p-2 border-gray-500 self-center
+        @apply grow min-h-fit h-full w-full min-w-96 max-w-screen-lg border-2 p-2 border-gray-500 self-center
     }
 }
