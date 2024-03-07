@@ -6,7 +6,7 @@ export default async function Home() {
 
   const userInfo = await prisma.user.findFirstOrThrow()
   return (
-    <div className='grow flex flex-col sm:flex-row-reverse h-full w-full border-2 p-2 border-gray-500'>
+    <div className='customContainer flex flex-col sm:flex-row-reverse '>
       <div className='relative my-1 sm:my-0 sm:mx-1 w-fit h-fit rounded-lg overflow-hidden self-center'>
         <Image
           src={userInfo?.imgURL}
