@@ -35,7 +35,7 @@ export default function RenderMarkdown({ markdown }: { markdown: string }) {
         },
         img(props) {
             return props.src ? (
-                <div className={` ${props.title?.search('@float') != -1 ? 'md:float-right' : ''} rounded-lg overflow-hidden m-5 md:my-0 w-fit`}>
+                <div className={` ${props.title && props.title?.search('@float') != -1 ? 'md:float-right' : ''} rounded-lg overflow-hidden m-5 md:my-0 w-fit`}>
                     <Image
                         src={props.src}
                         title={props.title?.replace('@float', '')}
