@@ -16,9 +16,6 @@ export async function submitForm(formData: FormData) {
             about: formData.get('markdown')?.toString()
         }
     })
-
     revalidatePath('/')
     revalidatePath('/about')
-
-    console.log(result)
 }

@@ -8,7 +8,6 @@ import { useSearchParams } from 'next/navigation';
 export default function UpdateInfo() {
     const [markdown, setMarkdown] = useState('')
     const searchParams = useSearchParams()
-    //console.log(searchParams.get('id'))
     return (
         <form id='form1' action={submitForm} className='grow flex flex-col justify-around gap-y-2 min-w-[1280px]'>
             <div className='flex flex-row p-5 rounded-lg ring-2 ring-gray-500 gap-x-3 items-center justify-stretch'>
