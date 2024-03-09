@@ -1,14 +1,28 @@
 import RenderMarkdown from '@/components/renderMarkdown/renderMarkdown'
 import React from 'react'
+import prisma from '@/lib/db'
 
 export async function generateStaticParams() {
-    return [{ articleId: '1' }, { articleId: '2' }]
+    const articles = await prisma.article.findMany({
+        select: {
+            id: true
+        }
+    })
+    return articles.map(article => { return { articleId: article.id } })
 }
 
-export default function Article({ params: articleId }: { params: { articleId: string } }) {
+export default async function Article({ params: { articleId } }: { params: { articleId: string } }) {
+    const article = await prisma.article.findUniqueOrThrow({
+        where: {
+            id: articleId
+        },
+        select: {
+            description: true
+        }
+    })
     return (
         <div className='customContainer flex flex-col justify-center'>
-            <RenderMarkdown markdown='' />
+            <RenderMarkdown markdown={article.description} />
         </div>
     )
 }

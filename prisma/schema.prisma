@@ -20,3 +20,22 @@ model User {
   intro  String
   about  String
 }
+
+model Category {
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  title    String
+  imgURL   String
+  articles Article[]
+}
+
+model Article {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  imgURL      String
+  type        String
+  intro       String
+  brief       String
+  description String
+  Category    Category? @relation(fields: [categoryId], references: [id])
+  categoryId  String?   @db.ObjectId
+}

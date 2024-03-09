@@ -1,18 +1,22 @@
 import React from 'react'
 import PreViewArticle from '@/components/previewArticle/preViewArticle'
+import prisma from '@/lib/db'
 
-export async function generateStaticParams() {
-    return [{ categoryId: '1' }, { categoryId: '1' }]
-}
-
-const projects = [1, 2, 3]
-export default function page({ params: { categoryId } }: { params: { categoryId: string } }) {
+export default async function Blog() {
+    const blogs = await prisma.article.findMany({
+        where: {
+            type: 'blog'
+        },
+        include: {
+            Category: false
+        }
+    })
     return (
 
         <div className='customContainer flex flex-col justify-center'>
-            {projects.map(project => {
+            {blogs.map(blog => {
                 return (
-                    <PreViewArticle key={project} />
+                    <PreViewArticle key={blog.id} article={blog} />
                 )
             })}
         </div>
