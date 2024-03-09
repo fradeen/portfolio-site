@@ -1,19 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import prisma from '@/lib/db'
 
-const categories = [
-    {
-        id: 1,
-        title: 'Web Development'
-    },
-    {
-        id: 2,
-        title: 'Linux'
-    },
-]
-
-export default function Portfolio() {
+export default async function Portfolio() {
+    const categories = await prisma.category.findMany({})
     return (
         <div className='grow min-h-fit w-full border-2 p-2 border-gray-500  flex flex-col sm:flex-row sm:justify-evenly'>
             {categories.map(category => {
