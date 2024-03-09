@@ -2,6 +2,7 @@
 
 import prisma from '@/lib/db'
 import { revalidatePath } from 'next/cache'
+import { RedirectType, redirect } from 'next/navigation'
 
 export async function submitForm(formData: FormData) {
 
@@ -18,4 +19,5 @@ export async function submitForm(formData: FormData) {
     })
     revalidatePath('/')
     revalidatePath('/about')
+    redirect('/about', RedirectType.replace)
 }
