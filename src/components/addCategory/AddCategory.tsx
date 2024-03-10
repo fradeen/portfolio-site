@@ -5,8 +5,8 @@ export default function AddCategory() {
 
     const formRef = useRef<HTMLFormElement>(null)
 
-    function onFormSubmit(formData: FormData) {
-        try { addCategory(formData) }
+    async function onFormSubmit(formData: FormData) {
+        try { await addCategory(formData) }
         catch (e) { }
         finally { formRef.current?.reset() }
     }
