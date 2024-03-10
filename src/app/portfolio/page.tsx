@@ -6,10 +6,10 @@ import prisma from '@/lib/db'
 export default async function Portfolio() {
     const categories = await prisma.category.findMany({})
     return (
-        <div className='grow min-h-fit w-full border-2 p-2 border-gray-500  flex flex-col sm:flex-row sm:justify-evenly'>
+        <div className='grow min-h-fit  border-2 p-2 border-gray-500 self-center grid justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-5 w-fit'>
             {categories.map(category => {
                 return (
-                    <Link href={`/portfolio/${category.id}`} className='border-2 border-gray-500 hover:text-green-500 hover:cursor-pointer w-72 aspect-[9/16] mx-1 rounded-lg overflow-hidden my-2 sm:my-0 self-center grid grid-cols-1 grid-rows-1'
+                    <Link href={`/portfolio/${category.id}`} className='border-2 border-gray-500 hover:text-green-500 hover:cursor-pointer w-64 sm:w-72 aspect-[9/16] mx-1 rounded-lg overflow-hidden my-2 sm:my-0 self-center grid grid-cols-1 grid-rows-1'
                         key={category.id}>
                         <Image
                             src={category.imgURL}
