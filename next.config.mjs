@@ -2,11 +2,14 @@
 const nextConfig = {
     output: 'export',
     images: {
-        unoptimized: true,
         remotePatterns: [
             {
                 protocol: 'https',
                 hostname: 'images.pexels.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'github.com',
             }
         ]
     }
