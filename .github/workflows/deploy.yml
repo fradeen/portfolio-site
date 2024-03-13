@@ -84,3 +84,4 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: fradeen
           directory: ./out
+          wranglerVersion: '3'
