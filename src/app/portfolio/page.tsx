@@ -2,7 +2,6 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import prisma from '@/lib/db'
-import AddCategory from '@/components/addCategory/AddCategory'
 
 export default async function Portfolio() {
     const categories = await prisma.category.findMany({})
@@ -25,12 +24,6 @@ export default async function Portfolio() {
                     </Link>
                 )
             })}
-            <div className='group border-2 border-gray-500  w-72 aspect-[9/16] mx-1 rounded-lg overflow-hidden my-2 sm:my-0 self-center p-2 flex flex-col justify-around'>
-                <div className=''>
-                    <p className='font-semibold text-6xl group-hover:text-green-500 text-center'>Add Category</p>
-                </div>
-                <AddCategory />
-            </div>
         </div>
     )
 }
