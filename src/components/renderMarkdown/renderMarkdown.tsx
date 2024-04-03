@@ -8,6 +8,7 @@ import rehypeRaw from 'rehype-raw'
 import remarkUnwrapImages from 'remark-unwrap-images'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark as darkTheme, oneLight as lightTheme } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import cloudinaryLoader from '@/lib/loader';
 export default function RenderMarkdown({ markdown }: { markdown: string }) {
 
     const { theme } = useThemeContext()
@@ -41,6 +42,7 @@ export default function RenderMarkdown({ markdown }: { markdown: string }) {
                         title={props.title?.replace('@float', '')}
                         width={1920}
                         height={1080}
+                        loader={cloudinaryLoader}
                         alt={props.alt ? props.alt : 'no description provided'}
                         className='md:max-w-md aspect-video'
                     />
