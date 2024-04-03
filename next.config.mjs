@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    output: 'export',
     images: {
         remotePatterns: [
             {
@@ -8,9 +9,11 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'github.com',
+                hostname: 'res.cloudinary.com/dozwseg65'
             }
         ],
+        loader: 'custom',
+        loaderFile: './src/lib/loader.ts',
     }
 };
 

@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link";
 import prisma from "@/lib/db";
+import cloudinaryLoader from "@/lib/loader";
 
 export default async function Home() {
 
@@ -9,9 +10,10 @@ export default async function Home() {
     <div className='customContainer flex flex-col sm:flex-row-reverse '>
       <div className='relative my-1 sm:my-0 sm:mx-1 w-fit h-fit rounded-lg overflow-hidden self-center'>
         <Image
-          src={userInfo?.imgURL}
+          src={'/sample'}
           width={1920}
           height={1080}
+          loader={cloudinaryLoader}
           alt="Author image"
         />
       </div>
