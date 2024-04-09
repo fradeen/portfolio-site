@@ -28,6 +28,7 @@ jobs:
   # Build and deploy
   build_deploy:
     runs-on: ubuntu-latest
+    environment: cloudflare-pages
     steps:
       - name: Checkout
         uses: actions/checkout@v4
