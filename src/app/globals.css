@@ -2,32 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer base {
+    h1 {
+        @apply text-7xl font-semibold
+    }
+
+    h2 {
+        @apply text-6xl font-semibold
+    }
+
+    h3 {
+        @apply text-5xl font-semibold
+    }
+
+    h4 {
+        @apply text-4xl font-semibold
+    }
+
+    h5 {
+        @apply text-3xl font-semibold
+    }
+
+    h6 {
+        @apply text-2xl font-semibold
+    }
+
+    table {
+        @apply table-auto border-collapse
+    }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+@layer components {
+    .customContainer {
+        @apply grow min-h-fit h-full w-full min-w-96 max-w-screen-lg border-2 p-2 border-gray-500 self-center
+    }
 }
