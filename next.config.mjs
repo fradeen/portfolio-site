@@ -5,15 +5,10 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'images.pexels.com',
-            },
-            {
-                protocol: 'https',
                 hostname: 'res.cloudinary.com/dozwseg65'
             }
         ],
-        loader: 'custom',
-        loaderFile: './src/lib/loader.ts',
+        loaderFile: './src/lib/imgLoader.ts'
     }
 };
 

@@ -1,25 +1,31 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Body from "@/components/body/body";
-import ThemeContextProvider from "@/contexts/themeContext";
+import NavBar from "@/components/navBar";
+import prisma from "@/lib/db";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Fardeen\'s porfolio",
+  title: "Fardeen's portfolio",
+  description: "",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const user = await prisma.user.findFirstOrThrow({
+    select: {
+      home: true
+    }
+  })
   return (
     <html lang="en">
-      <ThemeContextProvider>
-        <Body>
-          {children}
-        </Body>
-      </ThemeContextProvider>
+      <body className={`${inter.className} min-h-screen min-w-full flex flex-col justify-stretch dark:bg-black dark:text-white dark:shadow-white/50 shadow-black/50`}>
+        <NavBar home={user.home} />
+        {children}
+      </body>
     </html>
   );
 }
