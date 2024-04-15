@@ -12,7 +12,7 @@ export default async function Home() {
 
   const techStack = await prisma.techStack.findMany({})
   return (
-    <main className='w-full max-w-screen-xl mx-auto p-3 grow flex gap-5 justify-center items-center'>
+    <main className='customContainer'>
       <div className='mt-15 w-full max-w-screen-lg flex flex-col gap-16 justify-stretch'>
         <div className='flex flex-col-reverse md:flex-row gap-10 items-center'>
           <section className='flex-1 flex flex-col gap-5'>
