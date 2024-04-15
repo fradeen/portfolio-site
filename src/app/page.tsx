@@ -18,7 +18,7 @@ export default async function Home() {
           <section className='flex-1 flex flex-col gap-5'>
             <h1 className='text-5xl font-semibold'>{user.title}</h1>
             <p className='text-2xl font-light'>Hi, I&apos;m <span className='font-semibold'>{user.name}</span>. {user.intro}</p>
-            <Link href='/about' className='text-2xl font-light hover:font-semibold'>Know more...</Link>
+            <Link href='/about' className='text-2xl font-light w-fit hover:font-semibold'>Know more...</Link>
             <div className=' flex gap-3'>
               <span className='text-2xl font-light'>Hi I&apos;m available on | </span>
               {user.SocialMediaLink.map(link => {
