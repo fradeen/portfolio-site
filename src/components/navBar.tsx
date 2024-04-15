@@ -7,6 +7,11 @@ export default function NavBar({ home }: { home: string }) {
             <Link href='/' className='text-4xl font-semibold'>
                 {home}
             </Link>
+            <div className='flex gap-3 justify-around'>
+                <Link href='/about' className='text-2xl hover:font-semibold'>
+                    About
+                </Link>
+            </div>
         </nav>
     )
 }

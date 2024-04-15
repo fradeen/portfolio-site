@@ -12,13 +12,15 @@ export default async function Home() {
 
   const techStack = await prisma.techStack.findMany({})
   return (
-    <main className='w-full max-w-screen-xl mx-auto p-3 grow flex gap-5 justify-center items-center'>
+    <main className='customContainer'>
       <div className='mt-15 w-full max-w-screen-lg flex flex-col gap-16 justify-stretch'>
         <div className='flex flex-col-reverse md:flex-row gap-10 items-center'>
           <section className='flex-1 flex flex-col gap-5'>
             <h1 className='text-5xl font-semibold'>{user.title}</h1>
             <p className='text-2xl font-light'>Hi, I&apos;m <span className='font-semibold'>{user.name}</span>. {user.intro}</p>
-            <div className='px-3 flex gap-3'>
+            <Link href='/about' className='text-2xl font-light hover:font-semibold'>Know more...</Link>
+            <div className=' flex gap-3'>
+              <span className='text-2xl font-light'>Hi I&apos;m available on | </span>
               {user.SocialMediaLink.map(link => {
                 return (
                   <Link key={link.id} href={link.url} target='_blank' className='relative w-9 aspect-square rounded-full overflow-hidden hover:shadow-inherit hover:shadow-md bg-white'>
