@@ -2,38 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-    h1 {
-        @apply text-7xl font-semibold
-    }
-
-    h2 {
-        @apply text-6xl font-semibold
-    }
-
-    h3 {
-        @apply text-5xl font-semibold
-    }
-
-    h4 {
-        @apply text-4xl font-semibold
-    }
-
-    h5 {
-        @apply text-3xl font-semibold
-    }
-
-    h6 {
-        @apply text-2xl font-semibold
-    }
-
-    table {
-        @apply table-auto border-collapse
-    }
-}
-
 @layer components {
     .customContainer {
-        @apply grow min-h-fit h-full w-full min-w-96 max-w-screen-lg border-2 p-2 border-gray-500 self-center
+        @apply w-full max-w-screen-xl mx-auto p-3 grow flex gap-5 justify-center items-center;
     }
 }

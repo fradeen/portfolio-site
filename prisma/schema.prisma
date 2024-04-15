@@ -13,29 +13,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model SocialMediaLink {
   id     String @id @default(auto()) @map("_id") @db.ObjectId
-  name   String
-  imgURL String
-  intro  String
-  about  String
+  title  String
+  url    String
+  imgSrc String
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id])
 }
 
-model Category {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  title    String
-  imgURL   String
-  articles Article[]
+model User {
+  id              String            @id @default(auto()) @map("_id") @db.ObjectId
+  title           String
+  name            String
+  avatarSrc       String
+  home            String
+  intro           String
+  about           String
+  SocialMediaLink SocialMediaLink[]
 }
 
-model Article {
-  id          String    @id @default(auto()) @map("_id") @db.ObjectId
-  title       String
-  imgURL      String
-  type        String
-  intro       String
-  brief       String
-  description String
-  Category    Category? @relation(fields: [categoryId], references: [id])
-  categoryId  String?   @db.ObjectId
+model TechStack {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  title  String
+  imgSrc String
 }
