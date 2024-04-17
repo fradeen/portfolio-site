@@ -14,12 +14,14 @@ datasource db {
 }
 
 model SocialMediaLink {
-  id     String @id @default(auto()) @map("_id") @db.ObjectId
-  title  String
-  url    String
-  imgSrc String
-  userId String @db.ObjectId
-  user   User   @relation(fields: [userId], references: [id])
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  url         String
+  imgSrc      String
+  accentColor String
+  message     String
+  userId      String @db.ObjectId
+  user        User   @relation(fields: [userId], references: [id])
 }
 
 model User {
