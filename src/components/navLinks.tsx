@@ -10,14 +10,14 @@ export default function NavLinks({ onClick }: { onClick?: React.Dispatch<React.S
         <>
             {links.map(link => {
                 return !pathname.includes(link.src) ? (
-                    <Link key={link.title} href={link.src} className='text-4xl hover:font-semibold w-fit h-fit' onClick={() => {
+                    <Link key={link.title} href={link.src} className='text-3xl hover:font-semibold w-fit h-fit' onClick={() => {
                         if (onClick)
                             onClick(false)
                     }}>
                         {link.title}
                     </Link>
                 ) : (
-                    <div key={link.title} className='text-4xl font-semibold w-fit h-fit' >
+                    <div key={link.title} className='text-3xl font-semibold w-fit h-fit' >
                         {link.title}
                     </div>
                 )
