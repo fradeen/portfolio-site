@@ -7,7 +7,7 @@ export default function HamburgerMenu() {
     return (
         <>
             <button
-                className={`z-20 ${isSideBarOpen ? '' : 'sm:hidden'} flex flex-col h-12 w-12 border-2 border-black rounded justify-center items-center`}
+                className={`z-20 ${isSideBarOpen ? '' : 'sm:hidden'} flex flex-col h-12 w-12 border-2 border-black dark:border-white rounded justify-center items-center`}
                 onClick={() => setSidebar(prev => !prev)}
             >
                 <div

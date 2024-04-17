@@ -8,7 +8,7 @@
     }
 
     .genericHamburgerLine {
-        @apply h-1 w-6 my-1 rounded-full bg-black transition ease-in transform duration-300;
+        @apply h-1 w-6 my-1 rounded-full bg-black dark:bg-white transition ease-in transform duration-300;
     }
 }
 
