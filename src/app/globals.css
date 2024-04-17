@@ -6,4 +6,12 @@
     .customContainer {
         @apply w-full max-w-screen-xl mx-auto p-3 grow flex gap-5 justify-center items-center;
     }
+
+    .genericHamburgerLine {
+        @apply h-1 w-6 my-1 rounded-full bg-black transition ease-in transform duration-300;
+    }
+}
+
+html:has(section[role="nav-overlay"][data-open="true"]) {
+    overflow: hidden;
 }

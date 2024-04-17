@@ -19,19 +19,21 @@ export default async function Home() {
             <h1 className='text-5xl font-semibold'>{user.title}</h1>
             <p className='text-2xl font-light'>Hi, I&apos;m <span className='font-semibold'>{user.name}</span>. {user.intro}</p>
             <Link href='/about' className='text-2xl font-light w-fit hover:font-semibold'>Know more...</Link>
-            <div className=' flex gap-3'>
+            <div className=' flex flex-col sm:flex-row gap-3'>
               <span className='text-2xl font-light'>Hi I&apos;m available on | </span>
-              {user.SocialMediaLink.map(link => {
-                return (
-                  <Link key={link.id} href={link.url} target='_blank' className='relative w-9 aspect-square rounded-full overflow-hidden hover:shadow-inherit hover:shadow-md bg-white'>
-                    <Image src={link.imgSrc} alt='' fill className='object-cover' loader={cloudinaryUnoptimizedLoader} />
-                  </Link>
-                )
-              })}
+              <div className='flex gap-3'>
+                {user.SocialMediaLink.map(link => {
+                  return (
+                    <Link key={link.id} href={link.url} target='_blank' className='w-9 h-9 aspect-square p-1 rounded-full overflow-hidden hover:shadow-inherit hover:shadow-md bg-gray-100'>
+                      <Image src={link.imgSrc} alt='' width={32} height={32} loader={cloudinaryUnoptimizedLoader} />
+                    </Link>
+                  )
+                })}
+              </div>
             </div>
           </section>
           <div className='flex-1 relative w-full max-w-xs aspect-square rounded-full overflow-hidden'>
-            <Image src={user.avatarSrc} alt='' fill className='object-cover' />
+            <Image src={user.avatarSrc} alt='' width={500} height={500} className='object-cover' />
           </div>
         </div>
         <section className='flex flex-col md:flex-row items-start md:items-center gap-5'>
@@ -39,8 +41,8 @@ export default async function Home() {
           <div className='w-full grid grid-cols-4 md:grid-cols-8 auto-rows-auto place-content-around place-items-center gap-5'>
             {techStack.map(item => {
               return (
-                <div key={item.id} className='relative w-12 aspect-square rounded-full  overflow-hidden bg-white'>
-                  <Image src={item.imgSrc} alt={item.title} title={item.title} fill className='object-cover' loader={cloudinaryUnoptimizedLoader} />
+                <div key={item.id} className='w-12 aspect-square p-1 rounded-full overflow-hidden bg-gray-100'>
+                  <Image src={item.imgSrc} alt={item.title} title={item.title} width={32} height={32} className='w-fit h-fit mx-auto my-auto' loader={cloudinaryUnoptimizedLoader} />
                 </div>
               )
             })}

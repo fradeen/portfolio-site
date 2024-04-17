@@ -15,7 +15,7 @@ export default async function About() {
         <main className='customContainer'>
             <article className='grow flex flex-col md:block gap-5'>
                 <div className='mx-auto relative md:float-start max-w-xs w-2/5 aspect-square rounded-full overflow-hidden'>
-                    <Image src={user.avatarSrc} alt='Author Image' fill className='mx-auto' />
+                    <Image src={user.avatarSrc} alt='Author Image' width={500} height={500} className='mx-auto' />
                 </div>
                 <h1 className='mx-auto text-5xl font-semibold md:mb-5'>{user.name}</h1>
                 {pragraphs.map((paragraph, index) => {
@@ -23,15 +23,17 @@ export default async function About() {
                         <p key={index} className='text-2xl font-light'>{paragraph}</p>
                     )
                 })}
-                <div className='px-3 flex gap-3 mt-3 justify-center'>
+                <div className=' flex flex-col sm:flex-row gap-3 justify-center items-center'>
                     <span className='text-2xl font-light'>Hi I&apos;m available on | </span>
-                    {user.SocialMediaLink.map(link => {
-                        return (
-                            <Link key={link.id} href={link.url} target='_blank' className='relative w-9 aspect-square rounded-full overflow-hidden hover:shadow-inherit hover:shadow-md bg-white'>
-                                <Image src={link.imgSrc} alt='' fill className='object-cover' loader={cloudinaryUnoptimizedLoader} />
-                            </Link>
-                        )
-                    })}
+                    <div className='flex gap-3'>
+                        {user.SocialMediaLink.map(link => {
+                            return (
+                                <Link key={link.id} href={link.url} target='_blank' className='w-9 h-9 aspect-square p-1 rounded-full overflow-hidden hover:shadow-inherit hover:shadow-md bg-gray-100'>
+                                    <Image src={link.imgSrc} alt='' width={32} height={32} loader={cloudinaryUnoptimizedLoader} />
+                                </Link>
+                            )
+                        })}
+                    </div>
                 </div>
             </article>
         </main>
