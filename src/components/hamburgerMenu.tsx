@@ -27,7 +27,7 @@ export default function HamburgerMenu() {
                         } opacity-100`}
                 />
             </button>
-            <section role='nav-overlay' data-open={isSideBarOpen ? 'true' : 'false'} className={`no-doc-scroll absolute inset-y-0 left-0 w-full h-screen overscroll-none ${isSideBarOpen ? 'flex' : 'hidden'}`}  >
+            <section role='nav-overlay' data-open={isSideBarOpen ? 'true' : 'false'} className={`no-doc-scroll absolute inset-y-0 left-0 w-full h-screen overscroll-none flex ${isSideBarOpen ? 'translate-x-0' : '-translate-x-full'} transition-all ease-in-out duration-300`}  >
                 <div className='bg-white/80 dark:bg-black/80 min-w-fit overscroll-none pt-40 px-3 flex flex-col justify-start gap-7'>
                     <NavLinks onClick={setSidebar} />
                 </div>

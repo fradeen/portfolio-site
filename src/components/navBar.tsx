@@ -10,7 +10,7 @@ export default function NavBar({ home }: { home: string }) {
             <div className='flex gap-3'>
                 <HamburgerMenu />
                 <Link href='/' className='text-4xl font-semibold hidden sm:flex w-fit items-center gap-3'>
-                    <Image src='/logo.svg' width={30} height={40} alt='logo' unoptimized className='hidden sm:block' />
+                    <Image src='/logo.svg' width={30} height={40} alt='logo' unoptimized className='hidden sm:block dark:invert' />
                     <div>
                         {home}
                     </div>
