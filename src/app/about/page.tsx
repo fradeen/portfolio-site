@@ -13,7 +13,7 @@ export default async function About() {
     const pragraphs = user.about.split(/\r?\n/)
     return (
         <main className='customContainer'>
-            <article className='grow flex flex-col md:block gap-5'>
+            <article className='grow flex flex-col md:block gap-5' aria-label='about me'>
                 <div className='mx-auto relative md:float-start max-w-xs w-2/5 aspect-square rounded-full overflow-hidden'>
                     <Image src={user.avatarSrc} alt='Author Image' width={500} height={500} className='mx-auto' />
                 </div>
@@ -23,18 +23,18 @@ export default async function About() {
                         <p key={index} className='text-2xl font-light'>{paragraph}</p>
                     )
                 })}
-                <div className=' flex flex-col sm:flex-row gap-3 justify-center items-center'>
+                <section className=' flex flex-col sm:flex-row gap-3 justify-center items-center' aria-label='contact links'>
                     <span className='text-2xl font-light'>Hi I&apos;m available on | </span>
                     <div className='flex gap-3'>
                         {user.SocialMediaLink.map(link => {
                             return (
-                                <Link key={link.id} href={link.url} target='_blank' className='w-9 h-9 aspect-square p-1 rounded-full overflow-hidden hover:shadow-inherit hover:shadow-md bg-gray-100'>
-                                    <Image src={link.imgSrc} alt='' width={32} height={32} loader={cloudinaryUnoptimizedLoader} />
+                                <Link key={link.id} href={link.url} target='_blank' className='w-9 h-9 aspect-square p-1 rounded-full overflow-hidden hover:shadow-inherit hover:shadow-md bg-gray-100' aria-label={link.title}>
+                                    <Image src={link.imgSrc} alt={link.title} width={32} height={32} loader={cloudinaryUnoptimizedLoader} aria-hidden />
                                 </Link>
                             )
                         })}
                     </div>
-                </div>
+                </section>
             </article>
         </main>
     )

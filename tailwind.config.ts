@@ -9,7 +9,12 @@ const config: Config = {
   safelist: [
     "hover:bg-gradient-to-l hover:from-slate-700",
     "hover:bg-gradient-to-l hover:from-cyan-700",
-    "hover:bg-gradient-to-l hover:from-orange-700"
+    "hover:bg-gradient-to-l hover:from-orange-700",
+    "prose dark:prose-invert"
+  ],
+  plugins: [
+    require('@tailwindcss/typography'),
   ]
-};
+}
+
 export default config;

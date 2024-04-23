@@ -14,14 +14,14 @@ export default async function Contact() {
         <main className='customContainer'>
             <div className='p-2 flex-1 flex flex-col gap-3 justify-center items-center'>
                 <h1 className='w-full text-5xl font-semibold'>Let&apos;s Chat.</h1>
-                <h1 className='w-full text-5xl font-semibold'>Tell me about your project.</h1>
+                <h2 className='w-full text-5xl font-semibold'>Tell me about your project.</h2>
                 <h3 className='mt-3 w-full text-3xl font-light'>Let&apos;s create something together.</h3>
                 <div className='mt-10 grid gap-3 md:grid-cols-2 lg:grid-cols-3'>
                     {user.SocialMediaLink.map(link => {
                         return (
                             <Link key={link.id} href={link.url} className={`group max-w-xs p-3 rounded-lg border-2 flex gap-2 items-center hover:bg-gradient-to-l hover:from-${link.accentColor}`}>
-                                <div className='w-fit h-fit p-1 rounded-full bg-gray-100'>
-                                    <Image src={link.imgSrc} width={32} height={32} alt={link.title} loader={cloudinaryUnoptimizedLoader} />
+                                <div className='w-fit h-fit p-1 rounded-full bg-gray-100' aria-hidden>
+                                    <Image src={link.imgSrc} width={32} height={32} alt={link.title} loader={cloudinaryUnoptimizedLoader} aria-hidden />
                                 </div>
                                 <p className='text-2xl font-light group-hover:font-normal' >{link.message}</p>
                             </Link>

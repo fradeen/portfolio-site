@@ -32,6 +32,7 @@ model User {
   home            String
   intro           String
   about           String
+  tags            String[]
   SocialMediaLink SocialMediaLink[]
 }
 

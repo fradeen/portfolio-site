@@ -12,6 +12,6 @@
     }
 }
 
-html:has(section[role="nav-overlay"][data-open="true"]) {
+html:has(section[role="navigation"][data-open="true"]) {
     overflow: hidden;
 }
