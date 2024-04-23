@@ -6,24 +6,28 @@ import prisma from "@/lib/db";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Fardeen's portfolio",
-  description: "",
-  icons: {
-    icon: [
-      {
-        media: '(prefers-color-scheme: light)',
-        url: '/logo.svg',
-        href: '/logo.svg',
-      },
-      {
-        media: '(prefers-color-scheme: dark)',
-        url: '/logo_light.svg',
-        href: '/logo_light.svg',
-      },
-    ],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const user = await prisma.user.findFirstOrThrow({})
+  return {
+    title: `${user.name}'s Portfolio`,
+    description: "",
+    icons: {
+      icon: [
+        {
+          media: '(prefers-color-scheme: light)',
+          url: '/logo.svg',
+          href: '/logo.svg',
+        },
+        {
+          media: '(prefers-color-scheme: dark)',
+          url: '/logo_light.svg',
+          href: '/logo_light.svg',
+        },
+      ],
+    },
+    keywords: user.tags
+  }
+}
 
 export default async function RootLayout({
   children,
