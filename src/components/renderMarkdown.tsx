@@ -5,15 +5,15 @@ import remarkDirective from 'remark-directive'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark as theme } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import Image from 'next/image'
-import ImgSlider from '@/components/imgSlider'
 import remarkUnwrapImages from 'remark-unwrap-images'
+import Carousel from '@/components/carousel'
 
 const components: Partial<Components> = {
     pre(props) {
         return <>{props.children}</>
     },
     center(props) {
-        return <div className='flex flex-col justify-center items-center'>{props.children}</div>
+        return <div className={`${props.className} mx-auto flex flex-col justify-center items-center`}>{props.children}</div>
     },
     code(props) {
         const { children, className, node, ...rest } = props
@@ -40,12 +40,12 @@ const components: Partial<Components> = {
                 width={1280}
                 height={720}
                 alt={props.alt ? props.alt : 'no description provided'}
-                className='max-w-screen-sm w-full rounded-lg aspect-video not-prose'
+                className='not-prose aspect-video object-scale-down'
             />
         ) : null
     },
     //@ts-ignore
-    'ImgSlider': ImgSlider
+    'Carousel': Carousel
 }
 
 export default function RenderMarkdown({ markdown }: { markdown: string }) {
