@@ -20,20 +20,17 @@ model SocialMediaLink {
   imgSrc      String
   accentColor String
   message     String
-  userId      String @db.ObjectId
-  user        User   @relation(fields: [userId], references: [id])
 }
 
 model User {
-  id              String            @id @default(auto()) @map("_id") @db.ObjectId
-  title           String
-  name            String
-  avatarSrc       String
-  home            String
-  intro           String
-  about           String
-  tags            String[]
-  SocialMediaLink SocialMediaLink[]
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  name      String
+  avatarSrc String
+  home      String
+  intro     String
+  about     String
+  tags      String[]
 }
 
 model TechStack {
