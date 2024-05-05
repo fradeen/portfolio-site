@@ -4,11 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function Home() {
-  const user = await prisma.user.findFirstOrThrow({
-    include: {
-      SocialMediaLink: true
-    }
-  })
+  const user = await prisma.user.findFirstOrThrow({})
+  const socialMediaLinks = await prisma.socialMediaLink.findMany({})
 
   const techStack = await prisma.techStack.findMany({})
   return (
@@ -22,7 +19,7 @@ export default async function Home() {
             <div className=' flex flex-col sm:flex-row gap-3'>
               <span className='text-2xl font-light'>Hi I&apos;m available on | </span>
               <div className='flex gap-3'>
-                {user.SocialMediaLink.map(link => {
+                {socialMediaLinks.map(link => {
                   return (
                     <Link key={link.id} href={link.url} target='_blank' className='w-9 h-9 aspect-square p-1 rounded-full overflow-hidden hover:shadow-inherit hover:shadow-md bg-gray-100'>
                       <Image src={link.imgSrc} alt='' width={32} height={32} loader={cloudinaryUnoptimizedLoader} />

@@ -5,11 +5,8 @@ import Link from 'next/link'
 import React, { use } from 'react'
 
 export default async function About() {
-    const user = await prisma.user.findFirstOrThrow({
-        include: {
-            SocialMediaLink: true
-        }
-    })
+    const user = await prisma.user.findFirstOrThrow({})
+    const socialMediaLinks = await prisma.socialMediaLink.findMany({})
     const pragraphs = user.about.split(/\r?\n/)
     return (
         <main className='customContainer'>
@@ -26,7 +23,7 @@ export default async function About() {
                 <section className=' flex flex-col sm:flex-row gap-3 justify-center items-center' aria-label='contact links'>
                     <span className='text-2xl font-light'>Hi I&apos;m available on | </span>
                     <div className='flex gap-3'>
-                        {user.SocialMediaLink.map(link => {
+                        {socialMediaLinks.map(link => {
                             return (
                                 <Link key={link.id} href={link.url} target='_blank' className='w-9 h-9 aspect-square p-1 rounded-full overflow-hidden hover:shadow-inherit hover:shadow-md bg-gray-100' aria-label={link.title}>
                                     <Image src={link.imgSrc} alt={link.title} width={32} height={32} loader={cloudinaryUnoptimizedLoader} aria-hidden />
