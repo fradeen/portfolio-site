@@ -1,3 +1,4 @@
+import RenderMarkdown from '@/components/renderMarkdown'
 import prisma from '@/lib/db'
 import { cloudinaryUnoptimizedLoader } from '@/lib/imgLoader'
 import Image from 'next/image'
@@ -15,11 +16,9 @@ export default async function About() {
                     <Image src={user.avatarSrc} alt='Author Image' width={500} height={500} className='mx-auto' />
                 </div>
                 <h1 className='mx-auto text-5xl font-semibold md:mb-5'>{user.name}</h1>
-                {pragraphs.map((paragraph, index) => {
-                    return (
-                        <p key={index} className='text-2xl font-light'>{paragraph}</p>
-                    )
-                })}
+                <section className='prose md:prose-xl dark:prose-invert' style={{ maxWidth: '100%' }}>
+                    <RenderMarkdown markdown={user.about} />
+                </section>
                 <section className=' flex flex-col sm:flex-row gap-3 justify-center items-center' aria-label='contact links'>
                     <span className='text-2xl font-light'>Hi I&apos;m available on | </span>
                     <div className='flex gap-3'>
