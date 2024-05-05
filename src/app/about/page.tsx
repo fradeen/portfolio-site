@@ -8,7 +8,6 @@ import React, { use } from 'react'
 export default async function About() {
     const user = await prisma.user.findFirstOrThrow({})
     const socialMediaLinks = await prisma.socialMediaLink.findMany({})
-    const pragraphs = user.about.split(/\r?\n/)
     return (
         <main className='customContainer'>
             <article className='grow flex flex-col md:block gap-5' aria-label='about me'>
