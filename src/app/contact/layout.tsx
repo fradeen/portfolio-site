@@ -5,11 +5,11 @@ import React from 'react'
 export async function generateMetadata(): Promise<Metadata> {
     const user = await prisma.user.findFirstOrThrow({})
     return {
-        title: `About ${user.name}`,
+        title: `${user.name}'s Contact info`,
     }
 }
 
-export default function AboutPageLayout({ children }: { children: React.ReactNode }) {
+export default function ContactPageLayout({ children }: { children: React.ReactNode }) {
     return (
         <>
             {children}

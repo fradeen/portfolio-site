@@ -5,3 +5,7 @@ export default function cloudinaryLoader({ src, width, quality }: ImageLoaderPro
     const params = ['f_auto', 'c_limit', `w_${width}`, `q_${quality || 'auto'}`]
     return `https://res.cloudinary.com/dozwseg65/image/upload/${params.join(',')}${src}`
 }
+
+export function cloudinaryUnoptimizedLoader({ src, width, quality }: ImageLoaderProps) {
+    return `https://res.cloudinary.com/dozwseg65/image/upload/${src}`
+}

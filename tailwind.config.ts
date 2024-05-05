@@ -6,14 +6,15 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {
-    extend: {
-      colors: {
-        'default-dark': '#0d1117'
-      },
-    },
-  },
-  plugins: [],
-  darkMode: 'selector'
-};
+  safelist: [
+    "hover:bg-gradient-to-l hover:from-slate-700",
+    "hover:bg-gradient-to-l hover:from-cyan-700",
+    "hover:bg-gradient-to-l hover:from-orange-700",
+    "prose dark:prose-invert"
+  ],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ]
+}
+
 export default config;
