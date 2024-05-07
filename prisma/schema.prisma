@@ -38,3 +38,12 @@ model TechStack {
   title  String
   imgSrc String
 }
+
+model Project {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  imgSrc    String
+  markdown  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
