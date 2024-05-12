@@ -21,7 +21,7 @@ export default async function Project({ params }: { params: { id: string } }) {
                     <Image src={project.imgSrc} alt='Author Image' width={1920} height={1080} className='mx-auto' />
                 </div>
                 <h1 className='mx-auto text-5xl font-semibold md:mb-5'>{project.title}</h1>
-                <section className='prose md:prose-xl dark:prose-invert' style={{ maxWidth: '100%' }}>
+                <section className='prose md:prose-xl lg:prose-2xl dark:prose-invert' style={{ maxWidth: '100%' }}>
                     <RenderMarkdown markdown={project.markdown} />
                 </section>
             </article>

@@ -15,7 +15,7 @@ export default async function About() {
                     <Image src={user.avatarSrc} alt='Author Image' width={500} height={500} className='mx-auto' />
                 </div>
                 <h1 className='mx-auto text-5xl font-semibold md:mb-5'>{user.name}</h1>
-                <section className='prose md:prose-xl dark:prose-invert' style={{ maxWidth: '100%' }}>
+                <section className='prose md:prose-xl lg:prose-2xl dark:prose-invert' style={{ maxWidth: '100%' }}>
                     <RenderMarkdown markdown={user.about} />
                 </section>
                 <section className=' flex flex-col sm:flex-row gap-3 justify-center items-center' aria-label='contact links'>
