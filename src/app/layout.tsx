@@ -7,9 +7,9 @@ import prisma from "@/lib/db";
 const inter = Inter({ subsets: ["latin"] });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const user = await prisma.user.findFirst({})
+  const user = await prisma.user.findFirstOrThrow({})
   return {
-    title: `${user?.name}'s Portfolio`,
+    title: `${user.name}'s Portfolio`,
     description: "",
     icons: {
       icon: [
@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         },
       ],
     },
-    keywords: user?.tags
+    keywords: user.tags
   }
 }
 
@@ -34,7 +34,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const user = await prisma.user.findFirst({
+  const user = await prisma.user.findFirstOrThrow({
     select: {
       home: true
     }
@@ -42,7 +42,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} min-h-screen min-w-full flex flex-col justify-stretch dark:bg-black dark:text-white dark:shadow-white/50 shadow-black/50`}>
-        <NavBar home={user?.home ?? ''} />
+        <NavBar home={user.home} />
         {children}
       </body>
     </html>
