@@ -10,14 +10,14 @@ export default async function Projects() {
             <h1 className='w-full text-7xl my-20'>My Projects</h1>
             {projects && projects.length > 0 ?
                 projects.map(project => (
-                    <Link key={project.id} href={`/projects/${project.id}`}>
+                    <Link key={project.id} href={`/projects/${project.id}`} aria-labelledby={`${project.id}-title`}>
                         <ProjectPreview project={project} />
                     </Link>
                 ))
                 : (
-                    <div className='prose dark:prose-invert'>
+                    <section className='prose dark:prose-invert'>
                         <h1>No projects found.</h1>
-                    </div>
+                    </section>
                 )}
         </main>
     )
