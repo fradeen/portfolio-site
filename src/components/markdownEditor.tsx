@@ -10,6 +10,12 @@ export default function MarkdownEditor({ initialValue, callback }: { initialValu
     useEffect(() => {
         callback(markdown)
     }, [markdown, callback])
+    useEffect(() => {
+        if (initialValue) {
+            setMarkdown(initialValue)
+            setDebouncedMarkdown(initialValue)
+        }
+    }, [initialValue])
     useDebounced(() => { setDebouncedMarkdown(markdown) }, [markdown])
     useEffect(() => {
         if (textAreaRef.current && markdownAreaRef.current) {

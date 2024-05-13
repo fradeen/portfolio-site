@@ -86,10 +86,31 @@ export async function updateMediaLink(link: SocialMediaLink) {
 
 export async function addProject(project: Project) {
     try {
+        console.log(project)
         await prisma.project.create({
             data: {
                 title: project.title,
                 imgSrc: project.imgSrc,
+                tags: project.tags,
+                markdown: project.markdown
+            }
+        })
+    } catch (err) {
+        console.log(err)
+    }
+    revalidatePath('/', 'layout')
+    //redirect('/')
+}
+
+export async function updateProject(project: Project) {
+    try {
+        console.log(project)
+        await prisma.project.update({
+            where: { id: project.id },
+            data: {
+                title: project.title,
+                imgSrc: project.imgSrc,
+                tags: project.tags,
                 markdown: project.markdown
             }
         })

@@ -7,7 +7,7 @@ import { updateUserInfo } from '@/lib/actions'
 
 export default function UserUpdateForm({ user }: { user?: (User | null) }) {
     const [updatedUser, setUpdatedUser] = useState(user ? user : {} as User)
-    function onSubmit(formData: FormData) {
+    function onSubmit() {
         updateUserInfo(updatedUser)
     }
     const spliceTag = useCallback((index: number) => {
