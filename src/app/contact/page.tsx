@@ -1,25 +1,21 @@
+import ContactCard from '@/components/contactCard'
 import prisma from '@/lib/db'
-import { cloudinaryUnoptimizedLoader } from '@/lib/imgLoader'
-import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
 export default async function Contact() {
     const socialMediaLinks = await prisma.socialMediaLink.findMany({})
     return (
-        <main className='customContainer'>
+        <main className='customContainer prose dark:prose-invert md:prose-xl lg:prose-2xl'>
             <div className='p-2 flex-1 flex flex-col gap-3 justify-center items-center'>
                 <h1 className='w-full text-5xl font-semibold'>Let&apos;s Chat.</h1>
                 <h2 className='w-full text-5xl font-semibold'>Tell me about your project.</h2>
                 <h3 className='mt-3 w-full text-3xl font-light'>Let&apos;s create something together.</h3>
-                <div className='mt-10 grid gap-3 md:grid-cols-2 lg:grid-cols-3'>
+                <div className='mt-10 gap-3 grid self-center grid-cols-1 lg:grid-cols-2 place-content-center'>
                     {socialMediaLinks.map(link => {
                         return (
-                            <Link key={link.id} href={link.url} target='_blank' className={`group max-w-xs p-3 rounded-lg border-2 flex gap-2 items-center hover:bg-gradient-to-l hover:from-${link.accentColor}`}>
-                                <div className='w-fit h-fit p-1 rounded-full bg-gray-100' aria-hidden>
-                                    <Image src={link.imgSrc} width={32} height={32} alt={link.title} loader={cloudinaryUnoptimizedLoader} aria-hidden />
-                                </div>
-                                <p className='text-2xl font-light group-hover:font-normal' >{link.message}</p>
+                            <Link key={link.id} style={{ textDecorationLine: 'none' }} href={link.url} target='_blank' className='h-full w-full max-w-screen-md min-w-96' >
+                                <ContactCard mediaLink={link} />
                             </Link>
                         )
                     })}
