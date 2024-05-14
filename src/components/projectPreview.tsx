@@ -5,7 +5,7 @@ import RenderMarkdown from './renderMarkdown'
 
 export default function ProjectPreview({ project }: { project: Project }) {
     return (
-        <div className='min-w-80 max-w-screen-lg h-40 md:h-60 border-2 rounded-lg flex gap-3 justify-between '>
+        <div className='min-w-80 max-w-screen-lg h-40 md:h-60 border-2 rounded-lg flex gap-3 justify-between ring-black hover:ring-2'>
             <div className='basis-1/4 h-full relative rounded-lg ' aria-hidden>
                 <Image src={project.imgSrc} alt='' className='aspect-video object-cover rounded-tl-lg rounded-bl-lg' fill />
             </div>
