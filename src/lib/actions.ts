@@ -4,6 +4,7 @@ import { Project, SocialMediaLink, User } from "@prisma/client";
 import prisma from "./db";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { link } from "fs";
 
 export async function updateUserInfo(user: User) {
     try {
@@ -58,7 +59,7 @@ export async function addMediaLink(link: SocialMediaLink) {
         console.log(err)
     }
     revalidatePath('/', 'layout')
-    //redirect('/')
+    redirect('/dashboard/mediaLinks')
 }
 
 export async function updateMediaLink(link: SocialMediaLink) {
@@ -81,7 +82,7 @@ export async function updateMediaLink(link: SocialMediaLink) {
         console.log(err)
     }
     revalidatePath('/', 'layout')
-    //redirect('/')
+    redirect('/dashboard/mediaLinks')
 }
 
 export async function addProject(project: Project) {
@@ -132,4 +133,17 @@ export async function deleteProject(projectId: string) {
     }
     revalidatePath('/', 'layout')
     redirect('/dashboard/projects')
+}
+
+export async function deleteMediaLink(linkId: string) {
+    try {
+        console.log(linkId)
+        await prisma.socialMediaLink.delete({
+            where: { id: linkId },
+        })
+    } catch (err) {
+        console.log(err)
+    }
+    revalidatePath('/', 'layout')
+    redirect('/dashboard/mediaLinks')
 }

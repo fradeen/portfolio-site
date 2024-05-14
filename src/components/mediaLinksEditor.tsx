@@ -1,9 +1,8 @@
 'use client'
 import { SocialMediaLink } from '@prisma/client'
-import React, { useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import { cloudinaryUnoptimizedLoader } from '@/lib/imgLoader'
-import { addMediaLink } from '@/lib/actions'
 import MediaLinkForm from './mediaLinkForm'
 
 export default function MediaLinksEditor({ socialMediaLinks }: { socialMediaLinks: SocialMediaLink[] }) {
@@ -13,10 +12,10 @@ export default function MediaLinksEditor({ socialMediaLinks }: { socialMediaLink
             <div className='flex flex-wrap gap-3'>
                 {socialMediaLinks.map(link => {
                     return (
-                        <div key={link.id} className='group'>
-                            <div key={link.id} className={`group-hover:hidden group-focus-within:hidden max-w-xs p-3 rounded-lg border-2 flex gap-2 items-center hover:bg-gradient-to-l hover:from-${link.accentColor}`}>
-                                <div className='w-fit h-fit p-1 rounded-full bg-gray-100' aria-hidden>
-                                    <Image src={link.imgSrc} width={32} height={32} alt={link.title} loader={cloudinaryUnoptimizedLoader} aria-hidden />
+                        <div key={link.id} className='group max-w-max'>
+                            <div key={link.id} className={`group-hover:hidden group-focus-within:hidden max-w-xs w-full p-3 rounded-lg border-2 flex gap-2 items-center hover:bg-gradient-to-l hover:from-${link.accentColor}`}>
+                                <div className='rounded-full bg-gray-100 size-8 object-contain overflow-hidden' aria-hidden>
+                                    <Image src={link.imgSrc} style={{ margin: 0 }} width={32} height={32} alt={link.title} loader={cloudinaryUnoptimizedLoader} aria-hidden />
                                 </div>
                                 <p className='text-2xl font-light' >{link.message}</p>
                             </div>
