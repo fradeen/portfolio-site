@@ -120,3 +120,16 @@ export async function updateProject(project: Project) {
     revalidatePath('/', 'layout')
     //redirect('/')
 }
+
+export async function deleteProject(projectId: string) {
+    try {
+        console.log(projectId)
+        await prisma.project.delete({
+            where: { id: projectId },
+        })
+    } catch (err) {
+        console.log(err)
+    }
+    revalidatePath('/', 'layout')
+    redirect('/dashboard/projects')
+}

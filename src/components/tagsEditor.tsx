@@ -12,16 +12,16 @@ export default function TagsEditor({ tags, onDelete, onAdd }: { tags: string[] |
         <div className='col-span-2 w-full flex flex-col gap-3'>
             <div className='w-full flex flex-wrap'>
                 {tags?.map((tag, index) => (
-                    <div key={index} className='w-fit group flex gap-1 rounded-full p-2 m-1 bg-black dark:bg-white text-white dark:text-black text-xs'>
-                        <span className=''>{tag} </span>
-                        <button type='button' onClick={() => onDelete(index)} className='size-4 p-1 rounded-full bg-red-500 flex justify-center items-center'>X</button>
+                    <div key={index} className='w-fit flex gap-2 rounded-full p-2 m-1 bg-black dark:bg-white text-white dark:text-black text-sm'>
+                        <span className=''>{tag}</span>
+                        <button type='button' onClick={() => onDelete(index)} className='size-5 p-1 rounded-full bg-red-500 flex justify-center items-center'>X</button>
                     </div>
                 ))}
             </div>
-            <div className='max-w-sm border-2 rounded-lg focus-within:ring-2 focus-within:border-0 focus-within:ring-black focus-within:dark:ring-white ring-black px-3 flex justify-center items-center gap-2'>
-                <input name='newtag' type='text' placeholder='Tags' value={newTag} onChange={(event) => setNewTag(event.target.value)}
-                    className='outline-0 ring-0 border-0 p-2 rounded-lg focus:border-3 dark:bg-black dark:text-white h-fit grow' />
-                <button type='button' onClick={addTag} className='rounded-full px-2 bg-black dark:bg-white text-white dark:text-black' >Add</button>
+            <div className='max-w-screen-sm flex justify-center items-center'>
+                <input name='newtag' type='text' placeholder='add new tag' value={newTag} onChange={(event) => setNewTag(event.target.value)}
+                    className='p-2 rounded-tl-lg rounded-bl-lg border-black border-2 dark:bg-black dark:text-white grow' />
+                <button type='button' onClick={addTag} className='h-full rounded-tr-lg rounded-br-lg p-2 border-black border-2 bg-black dark:bg-white text-white dark:text-black' >Add</button>
             </div>
         </div>
     )
