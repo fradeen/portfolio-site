@@ -8,8 +8,8 @@ export default function ContactCard({ mediaLink }: { mediaLink: SocialMediaLink 
                 <Image src={mediaLink.imgSrc} style={{ margin: 0 }} alt={mediaLink.title} width={48} height={48} />
             </div>
             <div className='grow p-2'>
-                <h1 style={{ margin: '2px' }} id={`${mediaLink.id}-title`}>{mediaLink.title}</h1>
-                <section style={{ margin: 0 }} className='font-light'>{mediaLink.message}</section>
+                <h2 id={`${mediaLink.id}-title`}>{mediaLink.title}</h2>
+                <section className='font-light'>{mediaLink.message}</section>
             </div>
         </div>
     )

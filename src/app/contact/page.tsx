@@ -6,11 +6,13 @@ import React from 'react'
 export default async function Contact() {
     const socialMediaLinks = await prisma.socialMediaLink.findMany({})
     return (
-        <main className='customContainer prose dark:prose-invert md:prose-xl lg:prose-2xl'>
-            <div className='p-2 flex-1 flex flex-col gap-3 justify-center items-center'>
-                <h1 className='w-full text-5xl font-semibold'>Let&apos;s Chat.</h1>
-                <h2 className='w-full text-5xl font-semibold'>Tell me about your project.</h2>
-                <h3 className='mt-3 w-full text-3xl font-light'>Let&apos;s create something together.</h3>
+        <main className='customContainer'>
+            <div className='p-2 flex-1 flex flex-col gap-20 justify-center items-center'>
+                <div className='w-full grid gap-10'>
+                    <h1>Let&apos;s Chat.</h1>
+                    <h2>Tell me about your project.</h2>
+                    <h3>Let&apos;s create something together.</h3>
+                </div>
                 <div className='mt-10 gap-3 grid self-center grid-cols-1 lg:grid-cols-2 place-content-center'>
                     {socialMediaLinks.map(link => {
                         return (
