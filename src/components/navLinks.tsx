@@ -10,19 +10,21 @@ export default function NavLinks({ onClick, ariaHidden, tabIndex }: { onClick?: 
         <>
             {links.map(link => {
                 return !pathname.includes(link.src) ? (
-                    <Link key={link.title} href={link.src} className='text-3xl hover:font-semibold w-fit h-fit' onClick={() => {
+                    <Link key={link.title} href={link.src} className='w-fit h-fit' onClick={() => {
                         if (onClick)
                             onClick(false)
                     }}
                         aria-hidden={ariaHidden}
                         tabIndex={tabIndex}
                     >
-                        {link.title}
+                        <h3>
+                            {link.title}
+                        </h3>
                     </Link>
                 ) : (
-                    <div key={link.title} className='text-3xl font-semibold w-fit h-fit' aria-hidden={ariaHidden} tabIndex={tabIndex} >
+                    <h2 key={link.title} className='w-fit h-fit' aria-hidden={ariaHidden} tabIndex={tabIndex} >
                         {link.title}
-                    </div>
+                    </h2>
                 )
             })}
         </>

@@ -9,7 +9,7 @@ export default function ProjectPreview({ project }: { project: Project }) {
             <div className='basis-1/4 h-full relative rounded-lg ' aria-hidden>
                 <Image src={project.imgSrc} alt='' className='aspect-video object-cover rounded-tl-lg rounded-bl-lg' fill />
             </div>
-            <div className='basis-3/4 p-2 prose dark:prose-invert md:prose-xl lg:prose-2xl'>
+            <div className='basis-3/4 p-2'>
                 <h1 style={{ margin: '2px' }} id={`${project.id}-title`}>{project.title}</h1>
                 <section title='Creation date' style={{ margin: 0 }} className='font-light'>Created At: {project.createdAt.toDateString()}</section>
                 <div className='line-clamp-3 [&>p]:m-0'>
