@@ -19,9 +19,9 @@ export default async function UpdateProject({ params }: { params: { id: string }
     if (params.id !== 'new')
         mediaLink = await prisma.socialMediaLink.findFirstOrThrow({ where: { id: params.id } })
     return (
-        <main className='customContainer justify-start flex-col prose dark:prose-invert md:prose-xl lg:prose-2xl'>
+        <main className='customContainer justify-start flex-col'>
             <div className='w-full flex justify-between  my-10'>
-                <h1 style={{ margin: 0 }}>{`${mediaLink.id ? 'Update Media Link' : 'Add Media Link'}`}</h1>
+                <h1>{`${mediaLink.id ? 'Update Media Link' : 'Add Media Link'}`}</h1>
                 {mediaLink.id && (
                     <form action={async () => {
                         'use server'

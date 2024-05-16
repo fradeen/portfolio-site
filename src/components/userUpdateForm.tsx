@@ -24,8 +24,8 @@ export default function UserUpdateForm({ user }: { user?: (User | null) }) {
     }, [])
 
     return (
-        <div className='flex flex-col gap-3'>
-            <h1>{`${user ? 'Update' : 'Add'} user info.`}</h1>
+        <div className='flex flex-col gap-20'>
+            <h1 className='text-center'>{`${user ? 'Update' : 'Add'} user info.`}</h1>
             <form action={onSubmit} className='flex flex-col gap-3 w-full'>
                 <div className='flex gap-3 items-center flex-wrap '>
                     <input name='name' type='text' required placeholder='User Name*' value={updatedUser.name ?? ''} onChange={(event) => { setUpdatedUser(prev => ({ ...prev, name: event.target.value })) }} className='border-2 p-2 max-w-sm w-full rounded-lg focus:border-3 dark:bg-black dark:text-white h-fit' />
