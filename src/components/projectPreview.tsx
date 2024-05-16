@@ -5,14 +5,14 @@ import RenderMarkdown from './renderMarkdown'
 
 export default function ProjectPreview({ project }: { project: Project }) {
     return (
-        <div className='min-w-80 max-w-screen-lg h-40 md:h-60 border-2 rounded-lg flex gap-3 justify-between ring-black hover:ring-2'>
-            <div className='basis-1/4 h-full relative rounded-lg ' aria-hidden>
-                <Image src={project.imgSrc} alt='' className='aspect-video object-cover rounded-tl-lg rounded-bl-lg' fill />
+        <div className='min-w-80 max-w-screen-lg p-2 border-2 rounded-lg flex flex-col md:flex-row gap-3 justify-between ring-black hover:ring-2 text-start'>
+            <div className='w-full aspect-video md:basis-2/5 relative overflow-hidden rounded-lg' aria-hidden>
+                <Image src={project.imgSrc} alt={project.title} fill className='object-cover' />
             </div>
-            <div className='basis-3/4 p-2'>
-                <h1 style={{ margin: '2px' }} id={`${project.id}-title`}>{project.title}</h1>
-                <section title='Creation date' style={{ margin: 0 }} className='font-light'>Created At: {project.createdAt.toDateString()}</section>
-                <div className='line-clamp-3 [&>p]:m-0'>
+            <div className='md:basis-3/5 flex flex-col gap-3'>
+                <h1 id={`${project.id}-title`}>{project.title}</h1>
+                <section title='Creation date' className='font-light'>Created At: {project.createdAt.toDateString()}</section>
+                <div className='line-clamp-2 [&>p]:m-0'>
                     <RenderMarkdown markdown={project.markdown.split('  \n')[0]} />
                 </div>
             </div>

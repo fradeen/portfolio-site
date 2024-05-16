@@ -24,9 +24,9 @@ export default function MarkdownEditor({ initialValue, callback }: { initialValu
             <textarea name='intro' rows={1} ref={textAreaRef} required placeholder='Intro*' value={markdown}
                 onChange={(event) => {
                     setMarkdown(event.target.value)
-                }} className='flex-1 border-2 p-2 w-full rounded-lg focus:border-3 prose md:prose-xl dark:prose-invert dark:bg-black resize-none' />
+                }} className='flex-1 border-2 p-2 w-full rounded-lg focus:border-3 dark:bg-black resize-none' />
             {debouncedMarkdown ? (
-                <div ref={markdownAreaRef} className='flex-1 border-2 p-2 w-full rounded-lg prose md:prose-xl dark:prose-invert overflow-y-auto'>
+                <div ref={markdownAreaRef} className='flex-1 border-2 p-2 w-full rounded-lg overflow-y-auto'>
                     <RenderMarkdown markdown={debouncedMarkdown} />
                 </div>
             ) : null}
