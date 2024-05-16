@@ -14,7 +14,7 @@ export default async function AddProject() {
                 </Link>
                 {projects && projects.length > 0 ?
                     projects.map(project => (
-                        <Link href={`/dashboard/projects/${project.id}`} key={project.id} aria-labelledby={`${project.id}-title`}
+                        <Link href={`/dashboard/projects/${project.id}`} key={project.id} aria-labelledby={`${project.id}-title`} className='w-full max-w-screen-lg'
                         >
                             <ProjectPreview project={project} />
                         </Link>

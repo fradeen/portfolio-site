@@ -18,9 +18,9 @@ export default function TagsEditor({ tags, onDelete, onAdd }: { tags: string[] |
                     </div>
                 ))}
             </div>
-            <div className='max-w-screen-sm flex justify-center items-center'>
+            <div className='max-w-screen-sm flex justify-center items-center ring-2 ring-black dark:ring-white rounded-lg'>
                 <input name='newtag' type='text' placeholder='add new tag' value={newTag} onChange={(event) => setNewTag(event.target.value)}
-                    className='p-2 rounded-tl-lg rounded-bl-lg border-black border-2 dark:bg-black dark:text-white grow' />
+                    className='p-2 rounded-tl-lg rounded-bl-lg border-black border-2 dark:bg-black dark:text-white grow outline-0' />
                 <button type='button' onClick={addTag} className='h-full rounded-tr-lg rounded-br-lg p-2 border-black border-2 bg-black dark:bg-white text-white dark:text-black' >Add</button>
             </div>
         </div>
