@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation'
 import React from 'react'
 
 export default function NavLinks({ onClick, ariaHidden, tabIndex }: { onClick?: React.Dispatch<React.SetStateAction<boolean>>, ariaHidden?: boolean, tabIndex?: number }) {
-    const links = [{ title: 'About', src: '/about' }, { title: 'Contact', src: '/contact' }]
+    const links = [{ title: 'About', src: '/about' }, { title: 'Contact', src: '/contact' }, { title: 'Projects', src: '/projects' }]
     const pathname = usePathname()
     return (
         <>

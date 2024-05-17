@@ -5,17 +5,18 @@ import React from 'react'
 export async function generateMetadata(): Promise<Metadata> {
     const user = await prisma.user.findFirstOrThrow({})
     return {
-        title: `About ${user.name}`,
+        title: `${user.name}'s Projects`,
+        keywords: user.tags,
         openGraph: {
-            title: `About ${user.name}`,
+            title: `${user.name}'s Projects`,
         },
         twitter: {
-            title: `About ${user.name}`,
+            title: `${user.name}'s Projects`,
         },
     }
 }
 
-export default function AboutPageLayout({ children }: { children: React.ReactNode }) {
+export default function ProjectsLayout({ children }: { children: React.ReactNode }) {
     return (
         <>
             {children}

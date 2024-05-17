@@ -13,7 +13,7 @@ export default async function Home() {
       <div className='mt-15 w-full max-w-screen-lg flex flex-col gap-16 justify-stretch'>
         <div className='flex flex-col-reverse md:flex-row gap-10 items-center'>
           <section className='flex-1 flex flex-col gap-5' aria-label="about me">
-            <h1>{user.title}</h1>
+            <h1 className='text-start'>{user.title}</h1>
             <p>Hi, I&apos;m <b>{user.name}</b>. {user.intro}</p>
             <Link href='/about' className='w-fit'>Know more...</Link>
             <section className=' flex flex-col sm:flex-row gap-3 items-center' aria-label='contact links'>
