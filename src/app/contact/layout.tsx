@@ -6,6 +6,12 @@ export async function generateMetadata(): Promise<Metadata> {
     const user = await prisma.user.findFirstOrThrow({})
     return {
         title: `${user.name}'s Contact info`,
+        openGraph: {
+            title: `${user.name}'s Contact info`,
+        },
+        twitter: {
+            title: `${user.name}'s Contact info`,
+        }
     }
 }
 

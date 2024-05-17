@@ -2,6 +2,35 @@ import prisma from '@/lib/db'
 import React from 'react'
 import Image from 'next/image'
 import RenderMarkdown from '@/components/renderMarkdown'
+import imgUrlGenerator from '@/lib/imgUrlGenerator'
+import { Metadata } from 'next'
+
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+    const project = await prisma.project.findFirstOrThrow({ where: { id: params.id } })
+    return {
+        title: project.title,
+        keywords: project.tags,
+        openGraph: {
+            title: project.title,
+            description: project.markdown.split(' ')[0],
+            images: [
+                {
+                    url: imgUrlGenerator({ src: project.imgSrc, width: 720 })
+                }
+            ],
+            tags: project.tags
+        },
+        twitter: {
+            title: project.title,
+            description: project.markdown.split(' ')[0],
+            images: [
+                {
+                    url: imgUrlGenerator({ src: project.imgSrc, width: 720 })
+                }
+            ],
+        },
+    }
+}
 
 // Dynamic segments not included in generateStaticParams will return a 404
 export const dynamicParams = false

@@ -3,14 +3,16 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/navBar";
 import prisma from "@/lib/db";
+import imgUrlGenerator from "@/lib/imgUrlGenerator";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export async function generateMetadata(): Promise<Metadata> {
   const user = await prisma.user.findFirstOrThrow({})
+
   return {
     title: `${user.name}'s Portfolio`,
-    description: "",
+    description: `Hi, I'm ${user.name}. ${user.intro}`,
     icons: {
       icon: [
         {
@@ -25,7 +27,26 @@ export async function generateMetadata(): Promise<Metadata> {
         },
       ],
     },
-    keywords: user.tags
+    keywords: user.tags,
+    openGraph: {
+      title: `${user.name}'s Portfolio`,
+      description: `Hi, I'm ${user.name}. ${user.intro}`,
+      images: [
+        {
+          url: imgUrlGenerator({ src: user.avatarSrc, width: 720 })
+        }
+      ],
+      tags: user.tags
+    },
+    twitter: {
+      title: `${user.name}'s Portfolio`,
+      description: `Hi, I'm ${user.name}. ${user.intro}`,
+      images: [
+        {
+          url: imgUrlGenerator({ src: user.avatarSrc, width: 720 })
+        }
+      ]
+    },
   }
 }
 
