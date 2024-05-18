@@ -1,32 +1,19 @@
+import RenderMarkdown from "@/components/renderMarkdown";
 import prisma from "@/lib/db";
 import { cloudinaryUnoptimizedLoader } from "@/lib/imgLoader";
 import Image from "next/image";
-import Link from "next/link";
 
 export default async function Home() {
   const user = await prisma.user.findFirstOrThrow({})
-  const socialMediaLinks = await prisma.socialMediaLink.findMany({})
-
   const techStack = await prisma.techStack.findMany({})
   return (
     <main className='customContainer'>
       <div className='mt-15 w-full max-w-screen-lg flex flex-col gap-16 justify-stretch'>
         <div className='flex flex-col-reverse md:flex-row gap-10 items-center'>
-          <section className='flex-1 flex flex-col gap-5' aria-label="about me">
+          <section className='flex-1 flex flex-col gap-5' aria-label={`${user.name}'s introduction.`}>
             <h1 className='text-start'>{user.title}</h1>
-            <p>Hi, I&apos;m <b>{user.name}</b>. {user.intro}</p>
-            <Link href='/about' className='w-fit'>Know more...</Link>
-            <section className=' flex flex-col sm:flex-row gap-3 items-center' aria-label='contact links'>
-              <span>Hi I&apos;m available on | </span>
-              <div className='flex gap-3'>
-                {socialMediaLinks.map(link => {
-                  return (
-                    <Link key={link.id} href={link.url} target='_blank' className='size-11 p-2 rounded-full overflow-hidden hover:shadow-inherit hover:shadow-md bg-gray-100'>
-                      <Image src={link.imgSrc} alt={link.title} width={32} height={32} loader={cloudinaryUnoptimizedLoader} />
-                    </Link>
-                  )
-                })}
-              </div>
+            <section title='intro'>
+              <RenderMarkdown markdown={user.intro} />
             </section>
           </section>
           <div className='flex-1 relative w-full max-w-xs aspect-square rounded-full overflow-hidden'>
