@@ -8,7 +8,7 @@ export default async function Projects() {
     return (
         <main className='customContainer flex-col justify-start items-center gap-10'>
             <h1 className='w-full'>My Projects</h1>
-            <section aria-label='Project Links' className='flex flex-col gap-3 items-center justify-center'>
+            <section aria-label='Project Links' className='flex flex-col gap-3 items-center justify-center grow'>
                 {projects && projects.length > 0 ?
                     projects.map(project => (
                         <Link key={project.id} href={`/projects/${project.id}`} aria-labelledby={`${project.id}-title`}>

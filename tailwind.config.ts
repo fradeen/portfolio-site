@@ -10,6 +10,7 @@ const config: Config = {
     "hover:bg-gradient-to-l hover:from-slate-700",
     "hover:bg-gradient-to-l hover:from-cyan-700",
     "hover:bg-gradient-to-l hover:from-orange-700",
+    "hover:bg-gradient-to-l hover:from-red-500",
     "prose dark:prose-invert"
   ],
   plugins: [
