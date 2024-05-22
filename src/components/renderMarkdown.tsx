@@ -40,7 +40,7 @@ const components: Partial<Components> = {
                 width={1280}
                 height={720}
                 alt={props.alt ? props.alt : 'no description provided'}
-                className='not-prose aspect-video object-scale-down'
+                className='aspect-video object-scale-down'
             />
         ) : null
     },

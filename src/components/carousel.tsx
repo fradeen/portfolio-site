@@ -5,7 +5,7 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
     const [currentIndex, setCurrentIndex] = useState(0)
     const maxIndex = Children.count(children) - 1
     return (
-        <section className='relative max-w-screen-sm rounded-lg flex overflow-hidden' aria-label='carousel'>
+        <section className='relative max-w-screen-md rounded-lg flex overflow-hidden' aria-label='carousel'>
             {
                 Children.map(children, (child, index) => {
                     return (
@@ -44,7 +44,7 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
                 <div className='w-6 h-1 bg-white origin-bottom-left rotate-45 -translate-y-1' aria-hidden />
             </button>
             <div className='absolute bottom-4 w-full'>
-                <div className='w-fit mx-auto p-1 bg-black/50 rounded-full flex justify-center items-center gap-2' aria-hidden>
+                <div className='w-fit mx-auto p-1 bg-black/50 rounded-full flex justify-center items-center gap-2'>
                     {
                         Children.map(children, (_child, index) => {
                             return (
