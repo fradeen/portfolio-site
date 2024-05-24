@@ -1,12 +1,11 @@
 'use server'
 
-import { User } from "@prisma/client";
 import prisma from "./db";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { mediaLinkType, projectSchema, projectType, socialMediaLinkSchema, userSchema } from "./zodSchemas";
+import { mediaLinkType, projectSchema, projectType, socialMediaLinkSchema, userSchema, userType } from "./zodSchemas";
 
-export async function updateUserInfo(user: User) {
+export async function updateUserInfo(user: userType) {
     try {
 
         const userId = await prisma.user.findFirst({ select: { id: true } })
@@ -46,7 +45,7 @@ export async function updateUserInfo(user: User) {
     }
     revalidatePath('/')
     revalidatePath('/about')
-    redirect('/dashboard/user')
+    redirect('/dashboard')
 }
 
 export async function addMediaLink(link: mediaLinkType) {

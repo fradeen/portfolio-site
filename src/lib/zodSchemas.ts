@@ -16,6 +16,8 @@ export const userSchema = z.object({
     tags: z.array(z.string().min(1).max(100)).min(0)
 })
 
+export type userType = z.infer<typeof userSchema>
+
 export const socialMediaLinkSchema = z.object({
     id: z.optional(z.string().max(50).min(5)),
     title: z.string().min(1).max(50),

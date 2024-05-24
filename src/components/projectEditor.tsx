@@ -56,7 +56,7 @@ export default function ProjectEditor({ project }: { project: projectType }) {
                     <MarkdownEditor placeholder='markdown' error={errors?.markdown?.message} value={value ?? []} onChange={onChange} onBlur={onBlur} />
                 )}
             />
-            <button disabled={!isValid || isSubmitting ? true : false} className={`border-2 p-2 max-w-sm w-full rounded-lg  h-fit ${!isValid ? 'text-white bg-red-300' : ''} ${isSubmitting ? 'bg-slate-500' : 'hover:text-white dark:hover:text-black hover:bg-black dark:hover:bg-white'}`}>{project.id ? 'Update' : 'add'}</button>
+            <button disabled={!isValid || isSubmitting ? true : false} className={`border-2 p-2 max-w-sm w-full rounded-lg  h-fit ${!isValid ? 'text-white bg-red-300' : ''} ${isSubmitting ? 'bg-slate-300' : 'hover:text-white dark:hover:text-black hover:bg-black dark:hover:bg-white'}`}>{project.id ? 'Update' : 'add'}</button>
         </form>
     )
 }
