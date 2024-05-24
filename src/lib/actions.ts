@@ -1,10 +1,10 @@
 'use server'
 
-import { Project, User } from "@prisma/client";
+import { User } from "@prisma/client";
 import prisma from "./db";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { mediaLinkType, projectSchema, socialMediaLinkSchema, userSchema } from "./zodSchemas";
+import { mediaLinkType, projectSchema, projectType, socialMediaLinkSchema, userSchema } from "./zodSchemas";
 
 export async function updateUserInfo(user: User) {
     try {
@@ -116,7 +116,7 @@ export async function deleteMediaLink(linkId: string) {
 
 }
 
-export async function addProject(project: Project) {
+export async function addProject(project: projectType) {
     const validatedProject = projectSchema.safeParse(project)
     if (!validatedProject.success) {
         return validatedProject.error.flatten()
@@ -138,7 +138,7 @@ export async function addProject(project: Project) {
     redirect('/dashboard/projects')
 }
 
-export async function updateProject(project: Project) {
+export async function updateProject(project: projectType) {
     const validatedProject = projectSchema.safeParse(project)
     if (!validatedProject.success) {
         return validatedProject.error.flatten()
