@@ -28,6 +28,8 @@ export const socialMediaLinkSchema = z.object({
     }, { message: 'Message should have word count between 5 and 30.' }),
 })
 
+export type mediaLinkType = z.infer<typeof socialMediaLinkSchema>
+
 export const projectSchema = z.object({
     id: z.optional(z.string().max(50).min(5)),
     title: z.string().min(1).max(50),

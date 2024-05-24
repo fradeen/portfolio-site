@@ -1,10 +1,10 @@
 'use server'
 
-import { Project, SocialMediaLink, User } from "@prisma/client";
+import { Project, User } from "@prisma/client";
 import prisma from "./db";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { projectSchema, socialMediaLinkSchema, userSchema } from "./zodSchemas";
+import { mediaLinkType, projectSchema, socialMediaLinkSchema, userSchema } from "./zodSchemas";
 
 export async function updateUserInfo(user: User) {
     try {
@@ -49,7 +49,7 @@ export async function updateUserInfo(user: User) {
     redirect('/dashboard/user')
 }
 
-export async function addMediaLink(link: SocialMediaLink) {
+export async function addMediaLink(link: mediaLinkType) {
     try {
         const validatedLink = socialMediaLinkSchema.safeParse(link)
         if (!validatedLink.success) {
@@ -73,7 +73,7 @@ export async function addMediaLink(link: SocialMediaLink) {
     redirect('/dashboard/mediaLinks')
 }
 
-export async function updateMediaLink(link: SocialMediaLink) {
+export async function updateMediaLink(link: mediaLinkType) {
     try {
         const validatedLink = socialMediaLinkSchema.safeParse(link)
         if (!validatedLink.success) {
