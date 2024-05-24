@@ -40,3 +40,5 @@ export const projectSchema = z.object({
     }, { message: 'Markdown should have word count between 5 and 1000.' }),
     tags: z.array(z.string().min(1).max(100)).min(0)
 })
+
+export type projectType = z.infer<typeof projectSchema>

@@ -9,7 +9,8 @@ const nextConfig = {
             }
         ],
         loaderFile: './src/lib/imgLoader.ts'
-    }
+    },
+    reactStrictMode: false
 };
 
 export default nextConfig;
