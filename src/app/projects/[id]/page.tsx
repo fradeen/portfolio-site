@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 }
 
 // Dynamic segments not included in generateStaticParams will return a 404
-export const dynamicParams = false
+// export const dynamicParams = false
 
 export async function generateStaticParams() {
     const projectIds = await prisma.project.findMany({ select: { id: true } })
@@ -47,9 +47,9 @@ export default async function Project({ params }: { params: { id: string } }) {
         <main className='customContainer justify-start'>
             <article className='grow flex flex-col md:block gap-5' aria-label='about me'>
                 <div className='mx-auto relative w-5/6 aspect-video overflow-hidden'>
-                    <Image src={project.imgSrc} alt='Author Image' width={1920} height={1080} className='mx-auto' />
+                    <Image src={project.imgSrc} alt='Title image' fill className='object-contain' />
                 </div>
-                <h1 className='mx-auto text-5xl font-semibold md:mb-5'>{project.title}</h1>
+                <h1 className='mx-auto text-5xl font-semibold md:mb-5 text-start'>{project.title}</h1>
                 <section >
                     <RenderMarkdown markdown={project.markdown} />
                 </section>
