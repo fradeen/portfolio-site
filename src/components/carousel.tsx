@@ -1,11 +1,11 @@
 'use client'
 import React, { Children, useState } from 'react'
 
-export default function Carousel({ children }: { children: React.ReactNode }) {
+export default function Carousel({ children, className }: { children: React.ReactNode, className?: string }) {
     const [currentIndex, setCurrentIndex] = useState(0)
     const maxIndex = Children.count(children) - 1
     return (
-        <section className='relative max-w-screen-md rounded-lg flex overflow-hidden' aria-label='carousel'>
+        <section className={`relative max-w-screen-md rounded-lg flex overflow-hidden ${className}`} aria-label='carousel'>
             {
                 Children.map(children, (child, index) => {
                     return (
