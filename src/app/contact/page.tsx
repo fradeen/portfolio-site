@@ -16,7 +16,7 @@ export default async function Contact() {
                 <div className='gap-3 grid self-center grid-cols-1 lg:grid-cols-2 place-content-center'>
                     {socialMediaLinks.map(link => {
                         return (
-                            <div key={link.id} className='prose-a:hover:underline prose-a:no-underline'>
+                            <div key={link.id} className='prose-a:hover:underline prose-a:no-underline w-full h-full min-w-80 max-w-screen-lg'>
                                 <Link href={link.url} target='_blank' >
                                     <ContactCard mediaLink={link} />
                                 </Link>

@@ -11,7 +11,7 @@ export default function MarkdownEditor({ value, onChange, onBlur, error, placeho
                     onChange={(event) => {
                         onChange(event.target.value)
                     }} className={`flex-1 border-2 h-[50svh] p-2 rounded-lg grow overflow-y-auto focus:border-3 dark:bg-black resize-none outline-0  ${error ? 'ring-red-500 ring-2' : 'ring-black dark:ring-white focus:ring-2'}`} />
-                <div className={`flex-1 border-2 h-[50svh] p-2 flex flex-col scroll-auto rounded-lg overflow-y-auto ${error ? 'ring-red-500 ring-2' : 'ring-black dark:ring-white focus:ring-2'}`}>
+                <div className={`flex-1 border-2 h-[50svh] p-2 flex flex-col scroll-auto rounded-lg overflow-y-auto text-justify ${error ? 'ring-red-500 ring-2' : 'ring-black dark:ring-white focus:ring-2'}`}>
                     <MarkdownPreview markdown={value} />
                 </div>
             </div>

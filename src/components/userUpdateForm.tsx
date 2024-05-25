@@ -1,10 +1,9 @@
 "use client"
 import { User } from '@prisma/client'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React from 'react'
 import MarkdownEditor from './markdownEditor'
 import TagsEditor from './tagsEditor'
 import { updateUserInfo } from '@/lib/actions'
-import { z } from 'zod'
 import { userSchema, userType } from '@/lib/zodSchemas'
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -28,8 +27,8 @@ export default function UserUpdateForm({ user }: { user: User }) {
     }
 
     return (
-        <div className='flex flex-col gap-20'>
-            <h1 className='text-center'>{`${user ? 'Update' : 'Add'} user info.`}</h1>
+        <div className='flex flex-col'>
+            <h1>{`${user ? 'Update' : 'Add'} user info.`}</h1>
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-3 w-full'>
                 <div className='flex gap-3 flex-wrap items-start'>
                     <div className='flex flex-col max-w-sm'>

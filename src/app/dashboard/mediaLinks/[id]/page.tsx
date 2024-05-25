@@ -1,6 +1,5 @@
 import prisma from '@/lib/db'
 import React from 'react'
-import { SocialMediaLink } from '@prisma/client'
 import { deleteMediaLink } from '@/lib/actions'
 import MediaLinkForm from '@/components/mediaLinkForm'
 import { mediaLinkType } from '@/lib/zodSchemas'
@@ -20,7 +19,7 @@ export default async function UpdateMediaLink({ params }: { params: { id: string
         mediaLink = await prisma.socialMediaLink.findFirstOrThrow({ where: { id: params.id } })
     return (
         <main className='customContainer justify-start flex-col relative'>
-            <div className='w-full flex justify-between  my-10'>
+            <div className='w-full flex justify-between '>
                 <h1>{`${mediaLink.id ? 'Update Media Link' : 'Add Media Link'}`}</h1>
                 {mediaLink.id && (
                     <form action={deleteMediaLink.bind(null, mediaLink.id)}>

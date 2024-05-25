@@ -5,7 +5,7 @@ export default function Dashboard() {
     return (
         <main className='customContainer flex-col justify-start'>
             <h1 className='w-full'>Dashboard</h1>
-            <section className='flex grow justify-center items-center gap-3 text-center'>
+            <section className='flex grow justify-center items-center gap-3 text-center prose-a:no-underline'>
                 <Link href='/dashboard/user' title='update user' className='border-2 size-96 hover:ring-2 ring-black rounded-lg flex justify-center items-center'>
                     <h2 >
                         Update User

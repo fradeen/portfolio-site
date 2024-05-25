@@ -19,7 +19,7 @@ export default async function UpdateProject({ params }: { params: { id: string }
         project = await prisma.project.findFirstOrThrow({ where: { id: params.id } })
     return (
         <main className='w-full max-w-screen-2xl mx-auto p-3 grow flex gap-5 items-center flex-col justify-start'>
-            <div className='w-full flex justify-between  my-10'>
+            <div className='w-full flex justify-between'>
                 <h1>{`${project.id ? 'Update Project' : 'Add Project'}`}</h1>
                 {project.id && (
                     <form action={deleteProject.bind(null, project.id)}>

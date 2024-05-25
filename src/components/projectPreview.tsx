@@ -5,7 +5,7 @@ import RenderMarkdown from './renderMarkdown'
 
 export default function ProjectPreview({ project }: { project: Project }) {
     return (
-        <div className='min-w-80 max-w-screen-lg p-2 border-2 rounded-lg flex flex-col md:flex-row gap-3 justify-between ring-black hover:ring-2 text-start'>
+        <div className='w-full min-w-80 max-w-screen-lg p-2 border-2 rounded-lg flex flex-col md:flex-row gap-3 justify-between ring-black hover:ring-2 text-start'>
             <div className='w-full aspect-video md:basis-2/5 relative overflow-hidden rounded-lg prose-img:m-0' aria-hidden>
                 <Image src={project.imgSrc} alt={project.title} fill className='object-cover' />
             </div>
