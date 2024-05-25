@@ -7,7 +7,7 @@ import React from 'react'
 export default async function Footer() {
     const socialMediaLinks = await prisma.socialMediaLink.findMany({})
     return (
-        <footer className='w-full max-w-screen-xl mx-auto p-3 flex flex-col sm:flex-row justify-center items-center mt-10 gap-5' aria-label='contact links'>
+        <footer className='w-full max-w-screen-xl mx-auto p-3 flex flex-col sm:flex-row justify-center items-center mt-10 gap-5 prose-img:m-0 prose-a:no-underline prose-headings:m-0' aria-label='contact links'>
             <span className='text-start'>Hi I&apos;m available on | </span>
             <div className='flex gap-3'>
                 {socialMediaLinks.map(link => {

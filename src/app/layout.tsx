@@ -63,7 +63,7 @@ export default async function RootLayout({
   })
   return (
     <html lang="en">
-      <body className={`${inter.className} min-h-screen min-w-full flex flex-col justify-stretch dark:bg-black dark:text-white dark:shadow-white/50 shadow-black/50 prose dark:prose-invert prose-xl md:prose-2xl prose-img:m-0 prose-a:no-underline prose-headings:m-0 text-justify`}>
+      <body className={`${inter.className} min-h-screen min-w-full flex flex-col justify-stretch dark:bg-black dark:text-white dark:shadow-white/50 shadow-black/50 prose dark:prose-invert prose-xl md:prose-2xl `}>
         <NavBar home={user?.home ?? 'Home'} />
         {children}
         <Footer />
