@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 export default function NavBar({ home }: { home: string }) {
     return (
-        <nav className='w-full max-w-screen-xl mx-auto p-3 sticky top-0 z-10 bg-white/80 dark:bg-black/80 flex gap-5 justify-between items-center mb-10'>
+        <nav className='w-full max-w-screen-xl mx-auto p-3 sticky top-0 z-10 bg-white/80 dark:bg-black/80 flex gap-5 justify-between items-center mb-10 prose-img:m-0 prose-a:no-underline prose-headings:m-0'>
             <div className='flex gap-3'>
                 <HamburgerMenu />
                 <Link href='/' className='hidden sm:flex w-fit items-center gap-3'>

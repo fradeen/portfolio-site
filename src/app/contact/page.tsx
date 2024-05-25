@@ -8,17 +8,19 @@ export default async function Contact() {
     return (
         <main className='customContainer'>
             <div className='p-2 flex-1 flex flex-col gap-20 justify-center items-center'>
-                <div className='w-full grid gap-10'>
+                <div className='w-full flex flex-col'>
                     <h1>Let&apos;s Chat.</h1>
                     <h2>Tell me about your project.</h2>
                     <h3>Let&apos;s create something together.</h3>
                 </div>
-                <div className='mt-10 gap-3 grid self-center grid-cols-1 lg:grid-cols-2 place-content-center'>
+                <div className='gap-3 grid self-center grid-cols-1 lg:grid-cols-2 place-content-center'>
                     {socialMediaLinks.map(link => {
                         return (
-                            <Link key={link.id} href={link.url} target='_blank' >
-                                <ContactCard mediaLink={link} />
-                            </Link>
+                            <div key={link.id} className='prose-a:hover:underline prose-a:no-underline'>
+                                <Link href={link.url} target='_blank' >
+                                    <ContactCard mediaLink={link} />
+                                </Link>
+                            </div>
                         )
                     })}
                 </div>
