@@ -5,7 +5,6 @@ import remarkDirective from 'remark-directive'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark as theme } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import Image from 'next/image'
-import remarkUnwrapImages from 'remark-unwrap-images'
 import Carousel from '@/components/carousel'
 
 const components: Partial<Components> = {
@@ -45,12 +44,18 @@ const components: Partial<Components> = {
         ) : null
     },
     //@ts-ignore
-    'Carousel': Carousel
+    Carousel(props) {
+        return (
+            <Carousel>
+                {props.children}
+            </Carousel>
+        )
+    }
 }
 
 export default function RenderMarkdown({ markdown }: { markdown: string }) {
     return (
-        <Markdown remarkPlugins={[remarkUnwrapImages, remarkDirective, customRemarkDirective]} components={components}
+        <Markdown remarkPlugins={[remarkDirective, customRemarkDirective]} components={components}
         >
             {markdown}
         </Markdown>

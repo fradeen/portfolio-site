@@ -9,7 +9,7 @@ export default function NavLinks({ onClick, ariaHidden, tabIndex }: { onClick?: 
     return (
         <>
             {links.map(link => {
-                return !pathname.includes(link.src) ? (
+                return !pathname.endsWith(link.src) ? (
                     <Link key={link.title} href={link.src} className='w-fit h-fit' onClick={() => {
                         if (onClick)
                             onClick(false)
@@ -22,9 +22,9 @@ export default function NavLinks({ onClick, ariaHidden, tabIndex }: { onClick?: 
                         </h3>
                     </Link>
                 ) : (
-                    <h2 key={link.title} className='w-fit h-fit' aria-hidden={ariaHidden} tabIndex={tabIndex} >
+                    <h3 key={link.title} className='w-fit h-fit text-gray-400' aria-hidden={ariaHidden} tabIndex={tabIndex} >
                         {link.title}
-                    </h2>
+                    </h3>
                 )
             })}
         </>
