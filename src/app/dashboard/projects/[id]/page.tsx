@@ -13,7 +13,8 @@ export async function generateStaticParams() {
 }
 
 
-export default async function UpdateProject({ params }: { params: { id: string } }) {
+export default async function UpdateProject(props: { params: Promise<{ id: string }> }) {
+    const params = await props.params;
     let project = {} as Project
     if (params.id !== 'new')
         project = await prisma.project.findFirstOrThrow({ where: { id: params.id } })

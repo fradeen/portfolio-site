@@ -13,7 +13,8 @@ export async function generateStaticParams() {
 }
 
 
-export default async function UpdateMediaLink({ params }: { params: { id: string } }) {
+export default async function UpdateMediaLink(props: { params: Promise<{ id: string }> }) {
+    const params = await props.params;
     let mediaLink = {} as mediaLinkType
     if (params.id !== 'new')
         mediaLink = await prisma.socialMediaLink.findFirstOrThrow({ where: { id: params.id } })

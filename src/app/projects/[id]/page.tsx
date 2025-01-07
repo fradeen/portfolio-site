@@ -5,7 +5,8 @@ import RenderMarkdown from '@/components/renderMarkdown'
 import imgUrlGenerator from '@/lib/imgUrlGenerator'
 import { Metadata } from 'next'
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ id: string }> }): Promise<Metadata> {
+    const params = await props.params;
     const project = await prisma.project.findFirstOrThrow({ where: { id: params.id } })
     return {
         title: project.title,
@@ -38,7 +39,8 @@ export async function generateStaticParams() {
 }
 
 
-export default async function Project({ params }: { params: { id: string } }) {
+export default async function Project(props: { params: Promise<{ id: string }> }) {
+    const params = await props.params;
     const project = await prisma.project.findFirstOrThrow({ where: { id: params.id } })
     return (
         <main className='customContainer justify-start'>
